@@ -1,0 +1,154 @@
+/* CSS Stylesheet for Javascript Turing machine simulator */
+
+body {
+  text-align: center;
+}
+
+#debugOuter {
+  clear: both;
+}
+
+#MachineStatus {
+  border: 1px dashed red;
+  background-color: #ffdfda;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 90%;
+  height: 10em;
+  text-align: center;
+}
+
+.MachineStatusBox {
+  border: 1px solid grey;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  margin-top: 5px;
+  margin-bottom: 8px;
+/*  text-align: center; */
+  font-family: "Courier New", courier;
+}
+
+#MachineTape {
+  background-color: #eee8aa;
+/*  height: 1.5em; */
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  font-size: x-large;
+  margin-bottom: 2em;
+  
+}
+
+#MachineStateContainer {
+  text-align: left;
+  width: 15%;
+  float: left;
+  position: relative;
+  top: -1em;
+}
+
+#MachineState {
+  background-color: #90ee90;
+  text-align: left;
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+#MachineStatusLowerBlock {
+  text-align: center;
+  height: 4em;
+  position: relative;
+  width: 100%;
+}
+
+#MachineStatusMessagesContainer {
+  text-align: center;
+  width: 60%;
+  height: 3em;
+  display: inline;
+  position: relative;
+  bottom: -2em;
+  font-size: larger;
+}
+
+#MachineStepsContainer {
+  text-align: left;
+  float: right;
+  width: 15%;
+  position: relative;
+  top: -1em;
+}
+
+#MachineSteps {
+  background-color: #90ee90;
+  text-align: left;
+  float: right;
+  display: block;
+  width: 100%;
+  float: right;
+}
+
+.TapeHeadSymbol {
+  color: red;
+  border: 1px solid LightGrey;
+  font-weight: bold;
+  background-color: #bbf8ff;
+}
+
+#SyntaxInfo {
+  text-align: left;
+  margin-left: 2em;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#compiledProg {
+  display: none;
+}
+
+#ProgramSource {
+  margin-top: 10px;
+  width: 90%;
+  height: 400px;
+}
+
+#CompileButton {
+  display: none;
+}
+
+#IntroText {
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+h1 {
+  margin-bottom: 0.2em;
+}
+
+.backlinks {
+  text-align: center;
+  margin-bottom: 0.2em;
+}
+
+.Signature {
+  text-align: right;
+  font-style: italic;
+  font-size: smaller;
+}
+
+.DebugClass {
+  display: none;
+}

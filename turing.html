@@ -1,0 +1,103 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+  <link href="turing.css" rel="stylesheet" type="text/css">
+  <title>
+   Turing machine simulator
+  </title>
+  <script type="text/javascript" defer="defer" src="jsturing.js">
+  </script>
+ </head>
+
+ <body onload="UpdateStatusMessage( 'Load or write a Turing program below and click Run!' );">
+  <div id="Header">
+   <h1>Turing machine simulator</h1>
+   <div class="backlinks">
+    [<a href="http://morphett.info/default.html">Back to home page</a>]
+   </div>
+   <div id="IntroText">
+    This is a <a href="http://en.wikipedia.org/wiki/Turing_machine">Turing machine</a> simulator, written in JavaScript.
+    To use it:<br>
+    <ol>
+     <li>
+      Write your own in the TM Program area below.
+     </li>
+     <li>
+      Enter something in the 'Input' area - this will be initially written on the tape.
+     </li>
+     <li>
+      Click on 'Run' to start the Turing machine and run it until it halts (if ever).
+      Click on 'Stop' to interrupt the Turing machine while it is running.
+      Alternately, click 'Step' to run a single step of the Turing machine.
+     </li>
+     <li>
+      Click 'Reset' to restore the Turing machine to its initial state so it can be run again.
+     </li>
+    </ol>
+   </div>
+  </div>
+  <div id="MachineStatus">
+   <pre id="MachineTape" class="MachineStatusBox" onclick="ClickTape();"><span class="TapeHeadSymbol"> </span></pre> <!-- div tape !-->
+   <div id="MachineStatusLowerBlock">
+    <pre id="MachineStatusMessagesContainer">Load or write a Turing program below and click Run!</pre> <!-- div MachineStatusMessagesContainer !-->
+    <div id="MachineStateContainer">
+     Current state:
+     <div id="MachineState" class="MachineStatusBox">0</div> <!-- div MachineState !-->
+    </div> <!-- div MachineStateContainer !-->
+    <div id="MachineStepsContainer">
+     Steps:
+     <div id="MachineSteps" class="MachineStatusBox">0</div> <!-- div MachineSteps !-->
+    </div> <!-- div MachineStepsContainer !-->
+   </div> <!-- div MachineStatusLowerBlock !-->
+  </div> <!-- div MachineStatus !-->
+  <div style="text-align: center; width: 100%;">
+   <div id="buttons">
+    <button id="StepButton" onclick="StepButton();">Step</button>
+    <button id="RunButton" onclick="RunButton();">Run</button>
+    <button id="StopButton" onclick="StopButton();" disabled="true">Stop</button>
+    <button id="ResetButton" onclick="ResetButton();">Reset</button>
+    <button id="DebugButton" onclick="x();" class="DebugClass">Debug</button>
+    Run at full speed: <input id="SpeedCheckbox" onclick="SpeedCheckbox();" type="checkbox">
+    Initial input:<input id="InitialInput" value="" type="text" oninput="EditTape(this.value);" onfocus="ClickTape();" onblur="stopBlink();">
+   </div> <!-- div buttons !-->
+   <div id="inputProg">
+   Turing machine program:
+<!-- no indenting, because text inside textarea is verbatim !-->
+<textarea id="ProgramSource" wrap="off" onchange="Compile( document.getElementById('ProgramSource').value );">; Write your Turing machine program here!
+; Syntax: &lt;current state&gt; &lt;current symbol&gt; &lt;new symbol&gt; &lt;direction&gt; &lt;new state&gt;
+; ';' starts a comment.
+; '*' is a wildcard: it matches any symbol/state when used in the current symbol/state field;
+; it means 'same as current' when used in new symbol/new state field.
+; '_' represents the blank (space) symbol.
+; Symbols must be a single non-whitespace character except ';'.
+; States can be any word, not only numbers.
+;
+; This is a hack to load an appropriate initial tape. $INITIAL_TAPE: 11110011111</textarea>
+    <br>
+   </div> <!-- div inputProg !-->
+  </div> <!-- div text-align: center !-->
+  <div id="SyntaxInfo">Syntax:
+   <ul>
+    <li>Each line should contain one tuple of the form '<tt>&lt;current state&gt; &lt;current symbol&gt; &lt;new symbol&gt; &lt;direction&gt; &lt;new state&gt;</tt>'.</li>
+    <li>You can use any number or word for <tt>&lt;current state&gt;</tt> and <tt>&lt;new state&gt;</tt>, eg <tt>0, a, state1</tt>. State labels are case-sensitive.</li>
+    <li><tt>halt</tt> is the halting state. The machine starts in state <tt>0</tt>.</li>
+    <li>You can use any character for <tt>&lt;current symbol&gt;</tt> and <tt>&lt;new symbol&gt;</tt>, or '<tt>_</tt>' to represent blank (space). Symbols are case-sensitive.</li>
+    <li><tt>&lt;direction&gt;</tt> should be '<tt>l</tt>'/'<tt>&lt;</tt>', '<tt>r</tt>'/'<tt>&gt;</tt>' or '<tt>*</tt>' (any sybol), denoting 'move left', 'move right' or 'do not move', respectively.</li>
+    <li>Anything after a '<tt>;</tt>' is a comment and is ignored.</li>
+   </ul>
+   Also:
+   <ul>
+    <li>'<tt>*</tt>' can be used in <tt>&lt;current symbol&gt;</tt> or <tt>&lt;current state&gt;</tt> to match any character or state.</li>
+    <li>'<tt>*</tt>' can be used in <tt>&lt;new symbol&gt;</tt> or <tt>&lt;new state&gt;</tt> to mean 'no change'.</li>
+   </ul>
+  </div>
+  <div class="Signature">
+   Originally written by <a href="http://morphett.info/default.html">Anthony Morphett</a> - awmorp @ gmail.com - <a href="http://morphett.info/turing/turing.html">Original Version</a><br/>
+   Edited (just a little) by <a href="http://thezero.org">TheZero</a>
+  </div>
+  <div id="debugOuter" class="DebugClass">
+   Debug: <button id="ClearDebugButton" onclick="ClearDebug();">clear</button>
+   <div id="debug">
+   </div> <!-- div debug !-->
+  </div> <!-- div debugOuter !-->
+ 
+</body></html>
